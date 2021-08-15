@@ -1,0 +1,33 @@
+{
+  "name": "jwt-check-expiry",
+  "version": "1.0.2",
+  "description": "check JWT is expired or not.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "jwt",
+    "expire",
+    "json",
+    "web",
+    "token",
+    "decode",
+    "expiration",
+    "check",
+    "expiration",
+    "verify",
+    "jwt",
+    "expiration",
+    "exp",
+    "isexpired",
+    "expired",
+    "jwtexpired",
+    "expiry"
+  ],
+  "author": "vipin kumar",
+  "license": "MIT",
+  "dependencies": {
+    "jwt-decode": "^2.2.0"
+  }
+}
