@@ -18,5 +18,5 @@ or
 ```js
 import { isJwtTokenExpired } from 'jwt-check-expiration';
 
-console.log('isExpired is:', isJwtTokenExpired('JWT-token'));
+console.log('Token Expired:', isJwtTokenExpired('JWT-token'));
 ```
