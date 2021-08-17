@@ -26,8 +26,5 @@
     "expiry"
   ],
   "author": "vipin kumar",
-  "license": "MIT",
-  "dependencies": {
-    "jwt-decode": "^2.2.0"
-  }
+  "license": "MIT"
 }
