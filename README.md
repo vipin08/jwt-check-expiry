@@ -16,7 +16,10 @@ or
 ## Usage
 
 ```js
-import { isJwtTokenExpired } from 'jwt-check-expiration';
+import isJwtTokenExpired, { decode } from 'jwt-check-expiration';
 
-console.log('isExpired is:', isJwtTokenExpired('JWT-token'));
+console.log('isExpired is:', isJwtTokenExpired('<your-jwt-token>'));
+
+console.log('Decoded token :', decode('<your-jwt-token>'));
+
 ```

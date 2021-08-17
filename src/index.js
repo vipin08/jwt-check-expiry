@@ -22,7 +22,7 @@ export default function isJwtTokenExpired(token, optionalKey=null) {
     return IsJwtTokenExpired;
 }
 
-const decodeToken = (token) =>{
+export const decode = (token) =>{
     let header = {};
     let payload = {};
     try{
