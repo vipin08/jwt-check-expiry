@@ -8,14 +8,14 @@
 export default function isJwtTokenExpired(token, optionalKey=null) {
     if (typeof(token) !== 'string' || !token) throw new Error('Invalid JWT token');
     let IsJwtTokenExpired = false;
-    const decode =  decodeToken(token);
+    const decode_token =  decode(token);
     const currentTime = new Date().getTime()/1000;
 
     if (optionalKey === null)
-        if (currentTime > decode.payload.exp) IsJwtTokenExpired = true;
+        if (currentTime > decode_token.payload.exp) IsJwtTokenExpired = true;
     else
-        if (decode.payload.hasOwnProperty(optionalKey))
-            if (currentTime > decode.payload.get(optionalKey)) IsJwtTokenExpired = true;
+        if (decode_token.payload.hasOwnProperty(optionalKey))
+            if (currentTime > decode_token.payload.get(optionalKey)) IsJwtTokenExpired = true;
         else
             throw new Error('Invalid optionalKey');
     
