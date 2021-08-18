@@ -16,7 +16,7 @@ or
 ## Usage
 
 ```js
-import isJwtTokenExpired, { decode } from 'jwt-check-expiration';
+import isJwtTokenExpired, { decode } from 'jwt-check-expiry';
 
 console.log('isExpired is:', isJwtTokenExpired('<your-jwt-token>'));
 
