@@ -1,13 +1,12 @@
 const path = require("path");
 
 const config = {
-    mode: "none",
+    mode: "production",
     entry: {
-      'jwt-check-expiry': './src/index.ts',
-      'jwt-check-expiry.min': './src/index.ts'
+      'jwt-check-expiry.min': './src/index-standalone.ts'
     },
     output: {
-      path: path.resolve(__dirname, 'bundles'),
+      path: path.resolve(__dirname, 'lib'),
       filename: '[name].js',
       libraryTarget: 'umd',
       library: 'jwt-check-expiry',

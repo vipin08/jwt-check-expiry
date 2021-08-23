@@ -5,12 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="../bundles/jwt-check-expiry-browser.js"></script>
+    <script src="../lib/jwt-check-expiry.min.js"></script>
     <script>
-        var jwtCheckExpiry = 'jwt-check-expiry';
         var token = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTYyOTI4NTczMiwiZXhwIjoyNTI5Mjg5MzMyfQ==.LaV1duyFh0S7raWFDU73p9RNaMP044sBAQoUZx1D79Y';
-        var decodeToken = jwtCheckExpiryHelper.decode(token);
-        var IsTokenExpiredToken = jwtCheckExpiryHelper.default(token);
+        var decodeToken = JwtHelper.decode(token);
+        var IsTokenExpiredToken = JwtHelper.isJwtTokenExpired(token);
         alert(JSON.stringify(decodeToken));
         alert(JSON.stringify(IsTokenExpiredToken));
     </script>

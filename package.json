@@ -1,16 +1,16 @@
 {
   "name": "jwt-check-expiry",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "description": "check JWT is expired or not.",
   "main": "lib/index.js",
+  "module": "lib/index.js",
   "types": "lib/index.d.ts",
   "files": [
     "lib/**/*"
   ],
   "scripts": {
-    "clean": "rimraf lib lib-esm",
     "test": "jest --config jestconfig.json",
-    "build": "npm run clean && tsc && tsc -m es6 --outDir lib-esm && webpack && browserify .\\bundles\\jwt-check-expiry.js --s jwtCheckExpiryHelper >  lib/jwt-check-expiry-browser.js && rimraf bundles",
+    "build": "rimraf lib lib-esm && tsc && tsc -m es6 --outDir lib-esm && webpack",
     "format": "prettier --write \"src/**/*.ts\" \"lib/**/*.js\"",
     "lint": "tslint -p tsconfig.json",
     "prepare": "npm run build",
@@ -47,9 +47,6 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^27.0.1",
-    "awesome-typescript-loader": "^5.2.1",
-    "babel-loader": "^8.2.2",
-    "browserify": "^17.0.0",
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.5",
@@ -57,7 +54,6 @@
     "tslint": "^6.1.3",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^4.3.5",
-    "uglifyjs-webpack-plugin": "^2.2.0",
     "webpack": "^5.51.1",
     "webpack-cli": "^4.8.0"
   }
