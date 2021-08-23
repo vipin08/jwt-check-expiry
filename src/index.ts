@@ -4,6 +4,7 @@
  * @description A global JWT validator utility check weather expired or not.
  * @public
  */
+import atob from './atob';
 
 export default function isJwtTokenExpired(token: string, optionalKey?: string) {
   if (typeof token !== 'string' || !token) throw new Error('Invalid JWT token');
@@ -26,9 +27,8 @@ export function decode(token: string): any {
   try {
     [header, payload] = token
       .split('.')
-      .map((encodedString, index) =>
-        index !== 2 ? JSON.parse(Buffer.from(encodedString, 'base64').toString('ascii')) : '{}',
-      );
+      .slice(0, 2)
+      .map((encodedString) => JSON.parse(atob(encodedString)));
   } catch (err) {
     throw new Error('Invalid JWT token');
   }
