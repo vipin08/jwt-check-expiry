@@ -1,6 +1,6 @@
 {
   "name": "jwt-check-expiry",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "check JWT is expired or not.",
   "main": "lib/index.js",
   "module": "lib/index.js",
@@ -9,7 +9,7 @@
     "lib/**/*"
   ],
   "scripts": {
-    "test": "jest --config jestconfig.json",
+    "test": "jest --config jestconfig.json --coverage",
     "build": "rimraf lib lib-esm && tsc && tsc -m es6 --outDir lib-esm && webpack",
     "format": "prettier --write \"src/**/*.ts\" \"lib/**/*.js\"",
     "lint": "tslint -p tsconfig.json",

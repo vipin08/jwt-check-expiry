@@ -8,17 +8,22 @@ import atob from './atob';
 
 export default function isJwtTokenExpired(token: string, optionalKey?: string) {
   if (typeof token !== 'string' || !token) throw new Error('Invalid JWT token');
-  let IsJwtTokenExpired = false;
+
   const decodedToken = decode(token);
   const currentTime = new Date().getTime() / 1000;
 
-  if (optionalKey)
-    if (currentTime > decodedToken.payload.exp) IsJwtTokenExpired = true;
-    else if (decodedToken.payload.hasOwnProperty(optionalKey))
-      if (currentTime > (decodedToken.payload as any).get(optionalKey)) IsJwtTokenExpired = true;
-      else throw new Error('Invalid optionalKey');
-
-  return IsJwtTokenExpired;
+  if (!optionalKey && decodedToken.payload.exp) {
+    return currentTime > decodedToken.payload.exp;
+  } else if (decodedToken.payload.hasOwnProperty(optionalKey)) {
+    if (currentTime > (decodedToken.payload[`${optionalKey}`])) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  else{
+    return true;
+  }
 }
 
 export function decode(token: string): any {

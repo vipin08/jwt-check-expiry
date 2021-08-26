@@ -2,6 +2,10 @@ import isJwtTokenExpired, { decode } from '../index';
 
 const validToken: string =
   'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTYyOTI4NTczMiwiZXhwIjoyNTI5Mjg5MzMyfQ==.LaV1duyFh0S7raWFDU73p9RNaMP044sBAQoUZx1D79Y';
+const validTokenWithOptionKey: string =
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTYyOTI4NTczMiwidG9rZW5fZXhwIjoyNTI5Mjg5MzMyfQ==.LaV1duyFh0S7raWFDU73p9RNaMP044sBAQoUZx1D79Y'; 
+const expiredTokenWithOptionKey: string =
+  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWUsImlhdCI6MTYyOTI4NTczMiwidG9rZW5fZXhwIjoxNTI5Mjg5MzMyfQ==.LaV1duyFh0S7raWFDU73p9RNaMP044sBAQoUZx1D79Y';   
 const invalidToken: string = 'invalid.token.jwt';
 const validTokenExpectedResponse = {
   payload: {
@@ -20,6 +24,31 @@ const validTokenExpectedResponse = {
 test('Check Token Expiration', () => {
   let isExpired = isJwtTokenExpired(validToken);
   expect(isExpired).toBe(false);
+});
+
+test('Check Token Expiration With Optional Key', () => {
+  let isExpired = isJwtTokenExpired(validTokenWithOptionKey,'token_exp');
+  expect(isExpired).toBe(false);
+});
+
+test('Check Token Expiration With Optional Key Without Passing OptionKey Name as Parameter', () => {
+  let isExpired = isJwtTokenExpired(validTokenWithOptionKey);
+  expect(isExpired).toBe(true);
+});
+
+test('Check Expired Token Expiration With Optional Key', () => {
+  let isExpired = isJwtTokenExpired(expiredTokenWithOptionKey, 'token_exp');
+  expect(isExpired).toBe(true);
+});
+
+test('Check If Token Is Empty String', () => {
+  let haveException = false;
+  try {
+    isJwtTokenExpired('');
+  } catch (err) {
+    haveException = true;
+  }
+  expect(haveException).toBe(true);
 });
 
 test('Check Valid Token Validation', () => {

@@ -4,3 +4,4 @@ tslint.json
 .prettierrc
 lib/atob.*
 lib/index-standalone.*
+coverage
